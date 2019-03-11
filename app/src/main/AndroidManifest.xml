@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.naman.namanapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.AdminActivity" />
+        <activity android:name=".activities.DriverActivity" />
+        <activity android:name=".activities.DriverActivities.AddExpenditureActivity" />
+        <activity android:name=".activities.DriverActivities.AddIncomeActivity" />
+        <activity android:name=".activities.DriverActivities.DistanceTravelledActivity" />
+        <activity android:name=".activities.DriverActivities.PassbookActivity" />
+        <activity android:name=".activities.AdminFiles.AdminDriverActivity" />
+        <activity android:name=".SignupActivity"></activity>
+    </application>
+
+</manifest>
