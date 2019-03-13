@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvRegister, tvForget;
     EditText etUser, etPassword;
     private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
 
 
     @Override
@@ -35,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference().child("Users");
 
         if (auth.getCurrentUser() != null) {
             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
@@ -90,10 +96,22 @@ public class LoginActivity extends AppCompatActivity {
                                         if (!task.isSuccessful()) {
                                             Toast.makeText(LoginActivity.this, "Logging in failed!!", Toast.LENGTH_LONG).show();
                                         } else {
-                                            // TODO: add admin confirmation and add if case for opening admin file
-                                            Intent intent = new Intent(LoginActivity.this, DriverActivity.class);
-                                            startActivity(intent);
-                                            finish();
+
+                                            final String user_id = auth.getCurrentUser().getUid();
+
+                                            if (databaseReference.child(user_id).child("usertype").getKey() == "user") {
+                                                Intent i = new Intent(LoginActivity.this, DriverActivity.class);
+                                                //i.putExtra("CurrentUser", user_id);
+                                                startActivity(i);
+                                                finish();
+
+                                            } else if (databaseReference.child(user_id).child("usertype").getKey() == "admin") {
+                                                Intent i = new Intent(LoginActivity.this, AdminActivity.class);
+                                                //i.putExtra("CurrentUser", user_id);
+                                                startActivity(i);
+                                                finish();
+
+                                            }
                                         }
                                     }
                                 }

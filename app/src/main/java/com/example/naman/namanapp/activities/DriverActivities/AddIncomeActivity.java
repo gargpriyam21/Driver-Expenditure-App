@@ -14,7 +14,7 @@ public class AddIncomeActivity extends AppCompatActivity {
     EditText etgetIncome;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
 
 
     @Override
@@ -22,11 +22,21 @@ public class AddIncomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
 
-//        etgetIncome = findViewById(R.id.)
+//        etgetIncome = findViewById(R.id.et);
 
-//        etgetDistance = findViewById(R.id.et)
+//        etgetIncome = findViewById(R.id.etgetIncome);
 
-        String distance = String.valueOf(etgetIncome.getText());
+
+        String income = String.valueOf(etgetIncome.getText());
+
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference().child("Users");
+
+        final String user_id = auth.getCurrentUser().getUid();
+
+        databaseReference.child(user_id).child("amount").setValue(income);
+
 
     }
 }

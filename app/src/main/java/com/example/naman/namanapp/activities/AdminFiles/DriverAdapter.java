@@ -20,14 +20,21 @@ import java.util.ArrayList;
 
 public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverViewHolder> {
 
-    ArrayList<Driver> drivers = new ArrayList<>();
+    ArrayList<com.example.naman.namanapp.Driver> drivers = new ArrayList<>();
+
+    //    ArrayList<Driver> drivers = new ArrayList<>();
     Context context;
+
+    public DriverAdapter(ArrayList<com.example.naman.namanapp.Driver> drivers, Context context) {
+        this.drivers = drivers;
+        this.context = context;
+    }
 
     public DriverAdapter(Context context) {
         this.context = context;
     }
 
-    public void updatedrivers(ArrayList<Driver> photos) {
+    public void updatedrivers(ArrayList<com.example.naman.namanapp.Driver> photos) {
         this.drivers = photos;
         notifyDataSetChanged();
     }
@@ -63,16 +70,17 @@ public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverView
             llDrivers = itemView.findViewById(R.id.llDrivers);
         }
 
-        void bindView(final Driver driver) {
+        void bindView(final com.example.naman.namanapp.Driver driver) {
 
             tvName.setText(driver.getName());
-            tvCarNo.setText(driver.getCarNo());
-            tvCarName.setText(driver.getCarName());
+            tvCarNo.setText(driver.getCarno());
+            tvCarName.setText(driver.getCarname());
 
             llDrivers.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(context, AdminDriverActivity.class);
+
                     context.startActivity(i);
                 }
             });

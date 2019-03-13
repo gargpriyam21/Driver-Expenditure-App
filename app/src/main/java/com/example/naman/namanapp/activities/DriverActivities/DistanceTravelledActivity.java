@@ -14,7 +14,7 @@ public class DistanceTravelledActivity extends AppCompatActivity {
     EditText etgetDistance;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +23,15 @@ public class DistanceTravelledActivity extends AppCompatActivity {
 
 //        etgetDistance = findViewById(R.id.etge)
 
-
         String distance = String.valueOf(etgetDistance.getText());
+
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference().child("Users");
+
+        final String user_id = auth.getCurrentUser().getUid();
+
+        databaseReference.child(user_id).child("distance").setValue(distance);
 
     }
 }

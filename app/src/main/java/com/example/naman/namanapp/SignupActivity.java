@@ -58,6 +58,7 @@ public class SignupActivity extends AppCompatActivity {
                 final String carNo = etCarNo.getText().toString().trim();
                 final String contact = etContact.getText().toString().trim();
                 final String amount = "0";
+                final String distance = "0";
 
 
                 if (TextUtils.isEmpty(name)) {
@@ -113,9 +114,10 @@ public class SignupActivity extends AppCompatActivity {
 
                                     final String user_id = auth.getCurrentUser().getUid();
 
-                                    Driver driver = new Driver(name, email, carname, carNo, contact, amount);
+                                    Driver driver = new Driver(name, email, carname, carNo, contact, amount, distance);
 
                                     databaseReference.child(user_id).setValue(driver);
+
                                     databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot snapshot) {

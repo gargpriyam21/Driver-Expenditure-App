@@ -12,15 +12,17 @@ public class Driver {
     public String carno;
     public String contact;
     public String amount;
+    public String distance;
 
 
-    Driver(String n, String e, String cn, String cno, String cont, String am) {
+    Driver(String n, String e, String cn, String cno, String cont, String am, String dist) {
         name = n;
         email = e;
         carname = cn;
         carno = cno;
         contact = cont;
         amount = am;
+        distance = dist;
     }
 
     public String getName() {
@@ -45,5 +47,9 @@ public class Driver {
 
     public String getAmount() {
         return amount;
+    }
+
+    public String getDistance() {
+        return distance;
     }
 }

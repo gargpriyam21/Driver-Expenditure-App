@@ -14,21 +14,22 @@ public class AddExpenditureActivity extends AppCompatActivity {
     EditText etFuel, etToll, etPersonal, etMaintenance, etInsurance;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenditure);
 
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference().child("Users");
+
         etFuel = findViewById(R.id.etFuel);
         etToll = findViewById(R.id.etToll);
         etPersonal = findViewById(R.id.etPersonal);
         etMaintenance = findViewById(R.id.etMaintenance);
         etInsurance = findViewById(R.id.etInsurance);
-
-
-
 
 
     }
