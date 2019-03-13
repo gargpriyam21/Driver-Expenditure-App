@@ -17,7 +17,7 @@
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="15dp"
             android:background="#11000000"
             android:drawablePadding="5dp"
             android:ems="10"
@@ -29,8 +29,7 @@
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="35dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="15dp"
             android:background="#11000000"
             android:drawablePadding="5dp"
             android:ems="10"
@@ -38,11 +37,49 @@
             android:inputType="textPersonName" />
 
         <EditText
+            android:id="@+id/etCarName"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="#11000000"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Car Name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etCarNo"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="#11000000"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Car No."
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etContact"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="#11000000"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Contact"
+            android:inputType="number" />
+
+
+        <EditText
             android:id="@+id/EtPassword"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="15dp"
             android:background="#11000000"
             android:drawablePadding="5dp"
             android:ems="10"
@@ -54,7 +91,7 @@
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="15dp"
             android:background="#11000000"
             android:drawablePadding="5dp"
             android:ems="10"
@@ -66,7 +103,6 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:text="Register"
             android:textColor="#fff" />
 

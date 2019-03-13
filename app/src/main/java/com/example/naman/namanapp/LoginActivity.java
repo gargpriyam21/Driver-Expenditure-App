@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
 
     //TODO add database for storing data etc etc
     //TODO complete authentication
-    //TODO take layouts from naman and implement them
 
     Button btnAdmin, btnDriver, btnLogin;
     TextView tvRegister, tvForget;

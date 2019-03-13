@@ -50,6 +50,26 @@
             android:layout_width="match_parent"
             android:layout_height="100dp" />
 
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="6dp"
+            android:text="Register Here." />
+
+        <TextView
+            android:id="@+id/tvForget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="44dp"
+            android:layout_marginTop="2dp"
+            android:text="Forget your password??" />
+
         <Button
             android:id="@+id/btnAdmin"
             android:layout_width="match_parent"
@@ -65,24 +85,6 @@
             android:layout_weight="1"
             android:text="Driver" />
 
-        <TextView
-            android:id="@+id/tvRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register Here."
-            android:layout_above="@+id/textView3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="6dp" />
-
-        <TextView
-            android:id="@+id/tvForget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forget your password??"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="44dp"
-            android:layout_marginTop="2dp"/>
 
     </LinearLayout>
 
