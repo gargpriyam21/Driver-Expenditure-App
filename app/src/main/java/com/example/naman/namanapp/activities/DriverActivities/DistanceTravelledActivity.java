@@ -21,7 +21,7 @@ public class DistanceTravelledActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distance_travelled);
 
-//        etgetDistance = findViewById(R.id.etge)
+        etgetDistance = findViewById(R.id.etgetDistance);
 
         String distance = String.valueOf(etgetDistance.getText());
 

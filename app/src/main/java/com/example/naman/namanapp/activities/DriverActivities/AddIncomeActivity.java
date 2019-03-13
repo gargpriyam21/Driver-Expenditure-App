@@ -22,10 +22,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
 
-//        etgetIncome = findViewById(R.id.et);
-
-//        etgetIncome = findViewById(R.id.etgetIncome);
-
+        etgetIncome = findViewById(R.id.etgetIncome);
 
         String income = String.valueOf(etgetIncome.getText());
 

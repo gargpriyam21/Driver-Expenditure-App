@@ -15,15 +15,17 @@ import com.example.naman.namanapp.R;
 import java.util.ArrayList;
 
 /**
- * Created by Neera on 01/02/19.
+ * Created by Priyam on 01/02/19.
  */
+
+
 
 public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverViewHolder> {
 
-    ArrayList<com.example.naman.namanapp.Driver> drivers = new ArrayList<>();
+    private ArrayList<com.example.naman.namanapp.Driver> drivers = new ArrayList<>();
 
     //    ArrayList<Driver> drivers = new ArrayList<>();
-    Context context;
+    private Context context;
 
     public DriverAdapter(ArrayList<com.example.naman.namanapp.Driver> drivers, Context context) {
         this.drivers = drivers;
@@ -80,7 +82,7 @@ public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverView
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(context, AdminDriverActivity.class);
-
+                    i.putExtra("UserId", driver.getId());
                     context.startActivity(i);
                 }
             });

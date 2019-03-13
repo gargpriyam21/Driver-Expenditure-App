@@ -26,7 +26,6 @@ public class AdminActivity extends AppCompatActivity {
 
     ArrayList<Driver> drivers = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

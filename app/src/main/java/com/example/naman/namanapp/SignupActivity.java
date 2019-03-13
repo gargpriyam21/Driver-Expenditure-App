@@ -114,7 +114,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                     final String user_id = auth.getCurrentUser().getUid();
 
-                                    Driver driver = new Driver(name, email, carname, carNo, contact, amount, distance);
+                                    Driver driver = new Driver(user_id, name, email, carname, carNo, contact, amount, distance);
 
                                     databaseReference.child(user_id).setValue(driver);
 

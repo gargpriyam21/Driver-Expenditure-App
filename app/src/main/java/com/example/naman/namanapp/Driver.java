@@ -6,6 +6,7 @@ package com.example.naman.namanapp;
 
 public class Driver {
 
+    public String id;
     public String name;
     public String email;
     public String carname;
@@ -15,7 +16,8 @@ public class Driver {
     public String distance;
 
 
-    Driver(String n, String e, String cn, String cno, String cont, String am, String dist) {
+    Driver(String Uid, String n, String e, String cn, String cno, String cont, String am, String dist) {
+        id = Uid;
         name = n;
         email = e;
         carname = cn;
@@ -23,6 +25,10 @@ public class Driver {
         contact = cont;
         amount = am;
         distance = dist;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {

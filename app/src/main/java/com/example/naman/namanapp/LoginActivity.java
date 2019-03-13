@@ -23,8 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class LoginActivity extends AppCompatActivity {
 
 
-    //TODO add database for storing data etc etc
-    //TODO complete authentication
+    //TODO add class for expenditure and make passbook
 
     Button btnAdmin, btnDriver, btnLogin;
     TextView tvRegister, tvForget;
@@ -47,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
 
         btnAdmin = findViewById(R.id.btnAdmin);
         btnDriver = findViewById(R.id.btnDriver);
