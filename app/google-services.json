@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "410697948298",
+    "firebase_url": "https://naman-35d0e.firebaseio.com",
+    "project_id": "naman-35d0e",
+    "storage_bucket": "naman-35d0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410697948298:android:17d66172ef7d9dbd",
+        "android_client_info": {
+          "package_name": "com.example.naman.namanapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410697948298-452ak78ddgv4lg5vu4icg45hva6pgb7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo5K41Tnf89v4rsekrKjVMPVtqxGOFkNM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
