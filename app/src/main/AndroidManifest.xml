@@ -18,10 +18,10 @@
         </activity>
         <activity android:name=".activities.AdminActivity" />
         <activity android:name=".activities.DriverActivity" />
-        <activity android:name=".activities.DriverActivities.AddExpenditureActivity" />
-        <activity android:name=".activities.DriverActivities.AddIncomeActivity" />
-        <activity android:name=".activities.DriverActivities.DistanceTravelledActivity" />
-        <activity android:name=".activities.DriverActivities.PassbookActivity" />
+        <activity android:name=".activities.DriverFiles.AddExpenditureActivity" />
+        <activity android:name=".activities.DriverFiles.AddIncomeActivity" />
+        <activity android:name=".activities.DriverFiles.DistanceTravelledActivity" />
+        <activity android:name=".activities.DriverFiles.PassbookActivity" />
         <activity android:name=".activities.AdminFiles.AdminDriverActivity" />
         <activity android:name=".SignupActivity"></activity>
     </application>

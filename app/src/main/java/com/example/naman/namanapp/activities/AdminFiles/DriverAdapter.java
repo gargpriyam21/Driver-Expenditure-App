@@ -14,12 +14,6 @@ import com.example.naman.namanapp.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Priyam on 01/02/19.
- */
-
-
-
 public class DriverAdapter extends RecyclerView.Adapter<DriverAdapter.DriverViewHolder> {
 
     private ArrayList<com.example.naman.namanapp.Driver> drivers = new ArrayList<>();

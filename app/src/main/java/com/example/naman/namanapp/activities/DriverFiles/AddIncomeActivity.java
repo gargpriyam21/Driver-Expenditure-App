@@ -1,4 +1,4 @@
-package com.example.naman.namanapp.activities.DriverActivities;
+package com.example.naman.namanapp.activities.DriverFiles;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +10,11 @@ import android.widget.Toast;
 
 import com.example.naman.namanapp.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,8 +64,31 @@ public class AddIncomeActivity extends AppCompatActivity {
 
                 databaseReference.child(user_id).child("Expenditure").setValue(expenditure);
 
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        DataSnapshot postsnapshot = (DataSnapshot) dataSnapshot.getChildren();
+                        com.example.naman.namanapp.Driver driver = postsnapshot.getValue(com.example.naman.namanapp.Driver.class);
+
+                        String DBamount = driver.getAmount();
+
+                        int amt = Integer.parseInt(DBamount) + Integer.parseInt(amount);
+
+                        databaseReference.child(auth.getCurrentUser().getUid()).child("amount").setValue(String.valueOf(amt));
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                etgetIncome.setText(null);
+
             }
         });
+
 
     }
 }

@@ -3,7 +3,6 @@ package com.example.naman.namanapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,10 +10,10 @@ import android.widget.TextView;
 
 import com.example.naman.namanapp.Driver;
 import com.example.naman.namanapp.R;
-import com.example.naman.namanapp.activities.DriverActivities.AddExpenditureActivity;
-import com.example.naman.namanapp.activities.DriverActivities.AddIncomeActivity;
-import com.example.naman.namanapp.activities.DriverActivities.DistanceTravelledActivity;
-import com.example.naman.namanapp.activities.DriverActivities.PassbookActivity;
+import com.example.naman.namanapp.activities.DriverFiles.AddExpenditureActivity;
+import com.example.naman.namanapp.activities.DriverFiles.AddIncomeActivity;
+import com.example.naman.namanapp.activities.DriverFiles.DistanceTravelledActivity;
+import com.example.naman.namanapp.activities.DriverFiles.PassbookActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -91,7 +90,6 @@ public class DriverActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-                //TODO generate Error Message
             }
         });
 
