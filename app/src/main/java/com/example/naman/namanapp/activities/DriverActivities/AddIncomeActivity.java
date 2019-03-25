@@ -2,12 +2,19 @@ package com.example.naman.namanapp.activities.DriverActivities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.naman.namanapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AddIncomeActivity extends AppCompatActivity {
 
@@ -15,6 +22,7 @@ public class AddIncomeActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     FirebaseAuth auth;
+    Button btnIncome;
 
 
     @Override
@@ -23,17 +31,38 @@ public class AddIncomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_income);
 
         etgetIncome = findViewById(R.id.etgetIncome);
+        btnIncome = findViewById(R.id.btnAddIncome);
 
-        String income = String.valueOf(etgetIncome.getText());
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Users");
 
-        final String user_id = auth.getCurrentUser().getUid();
+        btnIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        databaseReference.child(user_id).child("amount").setValue(income);
+                final String amount = etgetIncome.getText().toString();
+                final String reason = "Income";
 
+                Date curDate = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+                final String datetime = dateFormat.format(curDate);
+
+
+                if (TextUtils.isEmpty(amount)) {
+                    Toast.makeText(getApplicationContext(), "Enter Amount!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                final String user_id = auth.getCurrentUser().getUid();
+
+                Expenditure expenditure = new Expenditure(datetime, amount, reason);
+
+                databaseReference.child(user_id).child("Expenditure").setValue(expenditure);
+
+            }
+        });
 
     }
 }

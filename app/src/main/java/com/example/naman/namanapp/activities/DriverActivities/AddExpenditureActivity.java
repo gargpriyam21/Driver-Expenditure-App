@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.naman.namanapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,7 +18,7 @@ import java.util.Date;
 
 public class AddExpenditureActivity extends AppCompatActivity {
 
-    EditText etFuel, etToll, etPersonal, etMaintenance, etInsurance;
+    EditText etgetExpenditure, etgetReason;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     FirebaseAuth auth;
@@ -32,51 +33,35 @@ public class AddExpenditureActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Users");
 
-        etFuel = findViewById(R.id.etFuel);
-        etToll = findViewById(R.id.etToll);
-        etPersonal = findViewById(R.id.etPersonal);
-        etMaintenance = findViewById(R.id.etMaintenance);
-        etInsurance = findViewById(R.id.etInsurance);
-        btnExpenditure = findViewById(R.id.btnExpenditure);
+        etgetExpenditure = findViewById(R.id.etgetExpenditure);
+        etgetReason = findViewById(R.id.etgetReason);
+        btnExpenditure = findViewById(R.id.btnAddExpenditure);
 
 
         btnExpenditure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String fuel = etFuel.getText().toString();
-                String toll = etToll.getText().toString();
-                String personal = etToll.getText().toString();
-                String mainteneance = etMaintenance.getText().toString();
-                String insurance = etInsurance.getText().toString();
 
+                final String amount = etgetExpenditure.getText().toString();
+                final String reason = etgetReason.getText().toString();
 
                 Date curDate = new Date();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
                 final String datetime = dateFormat.format(curDate);
 
 
-                if (TextUtils.isEmpty(fuel)) {
-                    fuel = String.valueOf(0);
+                if (TextUtils.isEmpty(amount)) {
+                    Toast.makeText(getApplicationContext(), "Enter Amount!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                if (TextUtils.isEmpty(toll)) {
-                    toll = String.valueOf(0);
+                if (TextUtils.isEmpty(reason)) {
+                    Toast.makeText(getApplicationContext(), "Enter Reason!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                if (TextUtils.isEmpty(personal)) {
-                    personal = String.valueOf(0);
-                }
-                if (TextUtils.isEmpty(mainteneance)) {
-                    mainteneance = String.valueOf(0);
-                }
-                if (TextUtils.isEmpty(insurance)) {
-                    insurance = String.valueOf(0);
-                }
-
-                int totalExp = Integer.parseInt(fuel) + Integer.parseInt(toll) + Integer.parseInt(personal) + Integer.parseInt(mainteneance) + Integer.parseInt(insurance);
-                String total = String.valueOf(totalExp);
 
                 final String user_id = auth.getCurrentUser().getUid();
 
-                Expenditure expenditure = new Expenditure(datetime, fuel, toll, personal, mainteneance, insurance, total);
+                Expenditure expenditure = new Expenditure(datetime, amount, reason);
 
                 databaseReference.child(user_id).child("Expenditure").setValue(expenditure);
 

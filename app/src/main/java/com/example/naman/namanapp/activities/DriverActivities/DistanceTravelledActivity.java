@@ -2,7 +2,11 @@ package com.example.naman.namanapp.activities.DriverActivities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.naman.namanapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,6 +19,7 @@ public class DistanceTravelledActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     FirebaseAuth auth;
+    Button btnDistance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +27,31 @@ public class DistanceTravelledActivity extends AppCompatActivity {
         setContentView(R.layout.activity_distance_travelled);
 
         etgetDistance = findViewById(R.id.etgetDistance);
+        btnDistance = findViewById(R.id.btnAddDistance);
 
-        String distance = String.valueOf(etgetDistance.getText());
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Users");
 
-        final String user_id = auth.getCurrentUser().getUid();
+        btnDistance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        databaseReference.child(user_id).child("distance").setValue(distance);
+                final String distance = String.valueOf(etgetDistance.getText());
+
+                if (TextUtils.isEmpty(distance)) {
+                    Toast.makeText(getApplicationContext(), "Enter Reason!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                final String user_id = auth.getCurrentUser().getUid();
+
+                databaseReference.child(user_id).child("distance").setValue(distance);
+            }
+
+        });
+
 
     }
 }
