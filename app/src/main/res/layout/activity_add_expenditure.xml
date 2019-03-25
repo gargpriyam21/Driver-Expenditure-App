@@ -117,13 +117,13 @@
 
     </LinearLayout>
 
-
-
-
-
-
-
-
+    <Button
+        android:id="@+id/btnExpenditure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="add Expenditure"
+        android:textSize="20sp" />
 
 
 </LinearLayout>
