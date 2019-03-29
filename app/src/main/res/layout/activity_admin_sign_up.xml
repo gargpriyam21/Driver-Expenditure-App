@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.naman.namanapp.SignupActivity">
-
+    tools:context="com.example.naman.namanapp.AdminSignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
 
 
         <EditText
-            android:id="@+id/etName"
+            android:id="@+id/etAdName"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -25,7 +24,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etAdEmail"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -37,49 +36,12 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/etCarName"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:background="#11000000"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Car Name"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/etCarNo"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:background="#11000000"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Car No."
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/etContact"
+            android:id="@+id/etAdPassword"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
-            android:background="#11000000"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Contact"
-            android:inputType="number" />
-
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="15dp"
             android:background="#11000000"
             android:drawablePadding="5dp"
             android:ems="10"
@@ -87,7 +49,7 @@
             android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/etCnfrmpassword"
+            android:id="@+id/etAdCnfrmpassword"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -99,7 +61,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/btnRegister"
+            android:id="@+id/btnAdRegister"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -109,16 +71,6 @@
             android:textColor="#fff" />
 
 
-        <TextView
-            android:id="@+id/tvAdLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="Register as Admin" />
-
-
     </LinearLayout>
-
 
 </LinearLayout>

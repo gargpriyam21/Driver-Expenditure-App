@@ -23,7 +23,8 @@
         <activity android:name=".activities.DriverFiles.DistanceTravelledActivity" />
         <activity android:name=".activities.DriverFiles.PassbookActivity" />
         <activity android:name=".activities.AdminFiles.AdminDriverActivity" />
-        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".AdminSignUpActivity"></activity>
     </application>
 
 </manifest>

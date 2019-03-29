@@ -8,10 +8,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.naman.namanapp.activities.DriverActivity;
+import com.example.naman.namanapp.activities.AdminActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,11 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class SignupActivity extends AppCompatActivity {
+public class AdminSignUpActivity extends AppCompatActivity {
 
-    Button btnRegister;
-    TextView tvAdLogin;
-    EditText etName, etEmail, etPassword, etCnfrmPassword, etCarName, etCarNo, etContact;
+    Button btnAdRegister;
+    EditText etAdName, etAdEmail, etAdPassword, etAdCnfrmPassword;
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
@@ -34,33 +32,25 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_admin_sign_up);
+
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Users");
 
-        etCarNo = findViewById(R.id.etCarNo);
-        btnRegister = findViewById(R.id.btnRegister);
-        etName = findViewById(R.id.etName);
-        etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
-        etCnfrmPassword = findViewById(R.id.etCnfrmpassword);
-        etCarName = findViewById(R.id.etCarName);
-        etContact = findViewById(R.id.etContact);
-        tvAdLogin = findViewById(R.id.tvAdLogin);
+        btnAdRegister = findViewById(R.id.btnAdRegister);
+        etAdName = findViewById(R.id.etAdName);
+        etAdEmail = findViewById(R.id.etAdEmail);
+        etAdPassword = findViewById(R.id.etAdPassword);
+        etAdCnfrmPassword = findViewById(R.id.etAdCnfrmpassword);
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnAdRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String name = etName.getText().toString().trim();
-                final String email = etEmail.getText().toString().trim();
-                String password = etPassword.getText().toString().trim();
-                String password2 = etCnfrmPassword.getText().toString().trim();
-                final String carname = etCarName.getText().toString().trim();
-                final String carNo = etCarNo.getText().toString().trim();
-                final String contact = etContact.getText().toString().trim();
-                final String amount = "0";
-                final String distance = "0";
+                final String name = etAdName.getText().toString().trim();
+                final String email = etAdEmail.getText().toString().trim();
+                String password = etAdPassword.getText().toString().trim();
+                String password2 = etAdCnfrmPassword.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(name)) {
@@ -78,21 +68,6 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(carname)) {
-                    Toast.makeText(getApplicationContext(), "Enter Car Name!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(carNo)) {
-                    Toast.makeText(getApplicationContext(), "Enter Car No!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(contact)) {
-                    Toast.makeText(getApplicationContext(), "Enter Contact Number!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                 if (!password.equals(password2)) {
                     Toast.makeText(getApplicationContext(), "Enter same password in ConfirmPassword!", Toast.LENGTH_SHORT).show();
                     return;
@@ -105,25 +80,25 @@ public class SignupActivity extends AppCompatActivity {
 
 
                 auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(AdminSignUpActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
+                                    Toast.makeText(AdminSignUpActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
 
                                     final String user_id = auth.getCurrentUser().getUid();
 
-                                    Driver driver = new Driver(user_id, name, email, carname, carNo, contact, amount, distance);
+                                    Driver driver = new Driver(user_id, name, email);
 
                                     databaseReference.child(user_id).setValue(driver);
 
                                     databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot snapshot) {
-                                            databaseReference.child(user_id).child("usertype").setValue("user");
+                                            databaseReference.child(user_id).child("usertype").setValue("admin");
                                         }
 
                                         @Override
@@ -132,10 +107,10 @@ public class SignupActivity extends AppCompatActivity {
                                         }
                                     });
 
-                                    Toast.makeText(SignupActivity.this, "Authentication successful",
+                                    Toast.makeText(AdminSignUpActivity.this, "Authentication successful",
                                             Toast.LENGTH_SHORT).show();
 
-                                    Intent i = new Intent(SignupActivity.this, DriverActivity.class);
+                                    Intent i = new Intent(AdminSignUpActivity.this, AdminActivity.class);
                                     //i.putExtra("CurrentUser", user_id);
                                     startActivity(i);
                                     finish();
@@ -146,13 +121,6 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        tvAdLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SignupActivity.this, AdminSignUpActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
     }
 }
