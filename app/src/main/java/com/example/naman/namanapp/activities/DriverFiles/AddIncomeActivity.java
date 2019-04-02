@@ -27,7 +27,6 @@ public class AddIncomeActivity extends AppCompatActivity {
     FirebaseAuth auth;
     Button btnIncome;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +34,6 @@ public class AddIncomeActivity extends AppCompatActivity {
 
         etgetIncome = findViewById(R.id.etgetIncome);
         btnIncome = findViewById(R.id.btnAddIncome);
-
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -52,28 +50,21 @@ public class AddIncomeActivity extends AppCompatActivity {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
                 final String datetime = dateFormat.format(curDate);
 
-
                 if (TextUtils.isEmpty(amount)) {
                     Toast.makeText(getApplicationContext(), "Enter Amount!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 final String user_id = auth.getCurrentUser().getUid();
-
                 Expenditure expenditure = new Expenditure(datetime, amount, reason);
-
-                databaseReference.child(user_id).child("Expenditure").setValue(expenditure);
+                databaseReference.child(user_id).child("Expenditure").push().setValue(expenditure);
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        DataSnapshot postsnapshot = (DataSnapshot) dataSnapshot.getChildren();
-                        com.example.naman.namanapp.Driver driver = postsnapshot.getValue(com.example.naman.namanapp.Driver.class);
 
-                        String DBamount = driver.getAmount();
-
+                        String DBamount = dataSnapshot.child(user_id).child("amount").getValue(String.class);
                         int amt = Integer.parseInt(DBamount) + Integer.parseInt(amount);
-
                         databaseReference.child(auth.getCurrentUser().getUid()).child("amount").setValue(String.valueOf(amt));
 
                     }

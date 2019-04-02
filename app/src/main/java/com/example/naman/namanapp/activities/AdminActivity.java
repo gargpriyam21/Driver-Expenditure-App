@@ -44,7 +44,12 @@ public class AdminActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Driver driver = postSnapshot.getValue(Driver.class);
+//                    if(driver.getUsertype().equals("user")){
+//                        drivers.add(driver);
+//                    }
+
                     drivers.add(driver);
+
                 }
 //
 //                String[] Drivers = new String[drivers.size()];

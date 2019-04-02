@@ -14,6 +14,7 @@ public class Driver {
     public String contact;
     public String amount;
     public String distance;
+    public String usertype;
 
 
     Driver(String Uid, String n, String e, String cn, String cno, String cont, String am, String dist) {
@@ -32,6 +33,9 @@ public class Driver {
         this.id = id;
         this.name = name;
         this.email = email;
+    }
+
+    public Driver() {
     }
 
     public String getId() {
@@ -64,5 +68,9 @@ public class Driver {
 
     public String getDistance() {
         return distance;
+    }
+
+    public String getUsertype() {
+        return usertype;
     }
 }

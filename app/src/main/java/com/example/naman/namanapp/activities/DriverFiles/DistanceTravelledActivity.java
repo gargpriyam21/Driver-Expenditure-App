@@ -54,14 +54,11 @@ public class DistanceTravelledActivity extends AppCompatActivity {
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        DataSnapshot postsnapshot = (DataSnapshot) dataSnapshot.getChildren();
-                        com.example.naman.namanapp.Driver driver = postsnapshot.getValue(com.example.naman.namanapp.Driver.class);
-
-                        String DBdist = driver.getDistance();
-
-                        int amt = Integer.parseInt(DBdist) + Integer.parseInt(distance);
 
                         final String user_id = auth.getCurrentUser().getUid();
+                        String DBdist = dataSnapshot.child(user_id).child("distance").getValue(String.class);
+
+                        int amt = Integer.parseInt(DBdist) + Integer.parseInt(distance);
 
                         databaseReference.child(user_id).child("distance").setValue(distance);
                     }

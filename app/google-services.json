@@ -15,8 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "410697948298-452ak78ddgv4lg5vu4icg45hva6pgb7j.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "410697948298-r4fc60akflb2h011h99ekmlgqsct8193.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.naman.namanapp",
+            "certificate_hash": "53ae06daa8a13d3e4556740380a8228fbbfa6ba9"
+          }
         }
       ],
       "api_key": [
@@ -25,15 +29,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410697948298-452ak78ddgv4lg5vu4icg45hva6pgb7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

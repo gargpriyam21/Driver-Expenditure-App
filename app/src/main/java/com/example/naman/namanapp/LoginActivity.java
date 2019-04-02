@@ -17,8 +17,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -95,19 +99,33 @@ public class LoginActivity extends AppCompatActivity {
 
                                             final String user_id = auth.getCurrentUser().getUid();
 
-                                            if (databaseReference.child(user_id).child("usertype").getKey() == "user") {
-                                                Intent i = new Intent(LoginActivity.this, DriverActivity.class);
-                                                //i.putExtra("CurrentUser", user_id);
-                                                startActivity(i);
-                                                finish();
+                                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                                            } else if (databaseReference.child(user_id).child("usertype").getKey() == "admin") {
-                                                Intent i = new Intent(LoginActivity.this, AdminActivity.class);
-                                                //i.putExtra("CurrentUser", user_id);
-                                                startActivity(i);
-                                                finish();
+                                            DatabaseReference usertype = databaseReference.child(user_id).child("usertype");
 
-                                            }
+                                            usertype.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                                    if (dataSnapshot.getValue(String.class).equals("user")) {
+                                                        Intent i = new Intent(LoginActivity.this, DriverActivity.class);
+                                                        //i.putExtra("CurrentUser", user_id);
+                                                        startActivity(i);
+//                                                        finish();
+
+                                                    } else if (dataSnapshot.getValue(String.class).equals("admin")) {
+                                                        Intent i = new Intent(LoginActivity.this, AdminActivity.class);
+                                                        //i.putExtra("CurrentUser", user_id);
+                                                        startActivity(i);
+//                                                        finish();
+                                                    }
+                                                }
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+
+                                                }
+                                            });
+
                                         }
                                     }
                                 }

@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:layout_weight="1"
         android:padding="5dp"
         app:cardCornerRadius="5dp">
 
@@ -38,7 +37,7 @@
                 android:layout_weight="1"
                 android:text="Name"
                 android:textAlignment="center"
-                android:textSize="25dp" />
+                android:textSize="40dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +52,7 @@
                     android:layout_weight="1"
                     android:text="Car No."
                     android:textAlignment="center"
-                    android:textSize="15dp" />
+                    android:textSize="25dp" />
 
                 <TextView
                     android:id="@+id/tvCarName"
@@ -62,9 +61,14 @@
                     android:layout_weight="1"
                     android:text="Car Name"
                     android:textAlignment="center"
-                    android:textSize="15dp" />
+                    android:textSize="25dp" />
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textSize="15dp"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -91,7 +95,6 @@
         <Button
             android:id="@+id/btnAddExp"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"

@@ -41,13 +41,15 @@ public class DriverActivity extends AppCompatActivity {
         tvCarNo = findViewById(R.id.tvCarNo);
         tvName = findViewById(R.id.tvName);
         btnAddExp = findViewById(R.id.btnAddExp);
-        btnAddInc = findViewById(R.id.btnDistTravel);
+        btnAddInc = findViewById(R.id.btnAddInc);
         btnPassbook = findViewById(R.id.btnPassbook);
         btnDistTravel = findViewById(R.id.btnDistTravel);
 
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Users");
         auth = FirebaseAuth.getInstance();
+        final String user_id = auth.getCurrentUser().getUid();
+        DatabaseReference urefeternce = databaseReference.child(user_id);
 
 
 //        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -76,15 +78,13 @@ public class DriverActivity extends AppCompatActivity {
 //        });
 //    }
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        urefeternce.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                DataSnapshot postsnapshot = (DataSnapshot) dataSnapshot.getChildren();
-                Driver driver = postsnapshot.getValue(Driver.class);
 
-                tvName.setText(driver.getName());
-                tvCarName.setText(driver.getCarname());
-                tvCarNo.setText(driver.getCarno());
+                tvName.setText(dataSnapshot.child("name").getValue(String.class));
+                tvCarName.setText(dataSnapshot.child("carname").getValue(String.class));
+                tvCarNo.setText(dataSnapshot.child("carno").getValue(String.class));
             }
 
             @Override

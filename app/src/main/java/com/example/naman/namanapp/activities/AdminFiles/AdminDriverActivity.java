@@ -53,13 +53,11 @@ public class AdminDriverActivity extends AppCompatActivity {
         databaseReference.child(Uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                DataSnapshot postsnapshot = (DataSnapshot) dataSnapshot.getChildren();
-                com.example.naman.namanapp.Driver driver = postsnapshot.getValue(com.example.naman.namanapp.Driver.class);
 
-                tvName.setText(driver.getName());
-                tvCarName.setText(driver.getCarname());
-                tvCarNo.setText(driver.getCarno());
-                tvContact.setText(driver.getContact());
+                tvName.setText(dataSnapshot.child("name").getValue(String.class));
+                tvCarName.setText(dataSnapshot.child("carname").getValue(String.class));
+                tvCarNo.setText(dataSnapshot.child("carno").getValue(String.class));
+                tvContact.setText(dataSnapshot.child("contact").getValue(String.class));
             }
 
             @Override
