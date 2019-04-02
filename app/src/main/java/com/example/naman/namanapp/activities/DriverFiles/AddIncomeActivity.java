@@ -57,7 +57,9 @@ public class AddIncomeActivity extends AppCompatActivity {
 
                 final String user_id = auth.getCurrentUser().getUid();
                 Expenditure expenditure = new Expenditure(datetime, amount, reason);
-                databaseReference.child(user_id).child("Expenditure").push().setValue(expenditure);
+                databaseReference.child(user_id).child("Expenditure").setValue(datetime);
+
+
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
