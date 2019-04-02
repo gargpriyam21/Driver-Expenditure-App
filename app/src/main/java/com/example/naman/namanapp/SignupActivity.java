@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.naman.namanapp.activities.DriverActivity;
+import com.example.naman.namanapp.activities.DriverFiles.Expenditure;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -61,6 +64,7 @@ public class SignupActivity extends AppCompatActivity {
                 final String contact = etContact.getText().toString().trim();
                 final String amount = "0";
                 final String distance = "0";
+                final HashMap<String, Expenditure> expenditureHashMap = new HashMap<String, Expenditure>();
 
 
                 if (TextUtils.isEmpty(name)) {
@@ -116,7 +120,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                     final String user_id = auth.getCurrentUser().getUid();
 
-                                    Driver driver = new Driver(user_id, name, email, carname, carNo, contact, amount, distance);
+                                    Driver driver = new Driver(user_id, name, email, carname, carNo, contact, amount, distance, expenditureHashMap);
 
                                     databaseReference.child(user_id).setValue(driver);
 

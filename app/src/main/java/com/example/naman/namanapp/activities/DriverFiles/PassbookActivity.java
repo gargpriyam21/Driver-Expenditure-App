@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PassbookActivity extends AppCompatActivity {
 
@@ -57,16 +59,19 @@ public class PassbookActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Expenditure");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid()).child("Expenditure");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Expenditure expenditure = postSnapshot.getValue(Expenditure.class);
-                    expenditures.add(expenditure);
+
+                HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.getValue();
+
+                for (Map.Entry<String, Expenditure> entry : Exp.entrySet()) {
+                    expenditures.add(entry.getValue());
                 }
+
             }
 
             @Override

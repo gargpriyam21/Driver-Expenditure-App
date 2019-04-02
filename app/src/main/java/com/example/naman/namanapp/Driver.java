@@ -1,5 +1,9 @@
 package com.example.naman.namanapp;
 
+import com.example.naman.namanapp.activities.DriverFiles.Expenditure;
+
+import java.util.HashMap;
+
 /**
  * Created by Priyam on 13/03/19.
  */
@@ -15,18 +19,31 @@ public class Driver {
     public String amount;
     public String distance;
     public String usertype;
+    public HashMap<String, Expenditure> Expenditure;
 
 
-    Driver(String Uid, String n, String e, String cn, String cno, String cont, String am, String dist) {
+    Driver(String id, String name, String email, String carname, String carno, String contact, String amount, String distance, HashMap<String, Expenditure> expenditureHashMap) {
 
-        id = Uid;
-        name = n;
-        email = e;
-        carname = cn;
-        carno = cno;
-        contact = cont;
-        amount = am;
-        distance = dist;
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.carname = carname;
+        this.carno = carno;
+        this.contact = contact;
+        this.amount = amount;
+        this.distance = distance;
+        this.Expenditure = expenditureHashMap;
+    }
+
+    public Driver(String id, String name, String email, String carname, String carno, String contact, String amount, String distance) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.carname = carname;
+        this.carno = carno;
+        this.contact = contact;
+        this.amount = amount;
+        this.distance = distance;
     }
 
     public Driver(String id, String name, String email) {
@@ -72,5 +89,9 @@ public class Driver {
 
     public String getUsertype() {
         return usertype;
+    }
+
+    public HashMap<String, Expenditure> getExpenditure() {
+        return Expenditure;
     }
 }

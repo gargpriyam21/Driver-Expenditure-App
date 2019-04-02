@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AdminDriverActivity extends AppCompatActivity {
 
@@ -76,9 +78,10 @@ public class AdminDriverActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Expenditure expenditure = postSnapshot.getValue(Expenditure.class);
-                    Adminexpenditures.add(expenditure);
+                HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.getValue();
+
+                for (Map.Entry<String, Expenditure> entry : Exp.entrySet()) {
+                    Adminexpenditures.add(entry.getValue());
                 }
             }
 

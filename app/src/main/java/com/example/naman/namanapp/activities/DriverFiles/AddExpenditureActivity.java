@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 public class AddExpenditureActivity extends AppCompatActivity {
 
@@ -62,14 +63,15 @@ public class AddExpenditureActivity extends AppCompatActivity {
                 }
 
                 final String user_id = auth.getCurrentUser().getUid();
-
-                Expenditure expenditure = new Expenditure(datetime, amount, reason);
-
-                databaseReference.child(user_id).child("Expenditure").setValue(datetime);
+                final Expenditure expenditure = new Expenditure(datetime, amount, reason);
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.child(user_id).child("Expenditure").getValue();
+                        Exp.put(datetime, expenditure);
+                        databaseReference.child(user_id).child("Expenditure").setValue(Exp);
 
                         String DBamount = dataSnapshot.child(user_id).child("amount").getValue(String.class);
                         int amt = Integer.parseInt(DBamount) - Integer.parseInt(amount);
