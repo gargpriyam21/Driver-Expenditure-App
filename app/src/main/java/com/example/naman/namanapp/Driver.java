@@ -19,7 +19,7 @@ public class Driver {
     public String amount;
     public String distance;
     public String usertype;
-    public HashMap<String, Expenditure> Expenditure;
+    public HashMap<String, Expenditure> expenditure;
 
 
     Driver(String id, String name, String email, String carname, String carno, String contact, String amount, String distance, HashMap<String, Expenditure> expenditureHashMap) {
@@ -32,7 +32,7 @@ public class Driver {
         this.contact = contact;
         this.amount = amount;
         this.distance = distance;
-        this.Expenditure = expenditureHashMap;
+        this.expenditure = expenditureHashMap;
     }
 
     public Driver(String id, String name, String email, String carname, String carno, String contact, String amount, String distance) {
@@ -92,6 +92,6 @@ public class Driver {
     }
 
     public HashMap<String, Expenditure> getExpenditure() {
-        return Expenditure;
+        return expenditure;
     }
 }

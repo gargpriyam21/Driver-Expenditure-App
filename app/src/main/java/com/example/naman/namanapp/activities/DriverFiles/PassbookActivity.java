@@ -41,6 +41,9 @@ public class PassbookActivity extends AppCompatActivity {
         tvAmount = findViewById(R.id.tvPassAmt);
         tvName = findViewById(R.id.tvPassName);
 
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid());
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -57,9 +60,7 @@ public class PassbookActivity extends AppCompatActivity {
         });
 
 
-        auth = FirebaseAuth.getInstance();
-
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid()).child("Expenditure");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid()).child("expenditure");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

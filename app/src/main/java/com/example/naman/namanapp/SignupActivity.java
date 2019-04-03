@@ -66,7 +66,6 @@ public class SignupActivity extends AppCompatActivity {
                 final String distance = "0";
                 final HashMap<String, Expenditure> expenditureHashMap = new HashMap<String, Expenditure>();
 
-
                 if (TextUtils.isEmpty(name)) {
                     Toast.makeText(getApplicationContext(), "Enter name!", Toast.LENGTH_SHORT).show();
                     return;

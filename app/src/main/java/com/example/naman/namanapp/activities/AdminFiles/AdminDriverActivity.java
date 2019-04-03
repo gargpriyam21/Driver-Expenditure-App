@@ -72,7 +72,7 @@ public class AdminDriverActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(Uid).child("Expenditure");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(Uid).child("expenditure");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

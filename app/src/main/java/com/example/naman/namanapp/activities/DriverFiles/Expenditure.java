@@ -12,8 +12,8 @@ public class Expenditure {
 
     public Expenditure(String datetime, String amount, String reason) {
         this.datetime = datetime;
-        Amount = amount;
-        Reason = reason;
+        this.Amount = amount;
+        this.Reason = reason;
     }
 
     public String getDatetime() {

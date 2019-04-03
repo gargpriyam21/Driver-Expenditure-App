@@ -63,9 +63,9 @@ public class AddIncomeActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.child(user_id).child("Expenditure").getValue();
+                        HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.child(user_id).child("expenditure").getValue();
                         Exp.put(datetime, expenditure);
-                        databaseReference.child(user_id).child("Expenditure").setValue(Exp);
+                        databaseReference.child(user_id).child("expenditure").setValue(Exp);
 
                         String DBamount = dataSnapshot.child(user_id).child("amount").getValue(String.class);
                         int amt = Integer.parseInt(DBamount) + Integer.parseInt(amount);

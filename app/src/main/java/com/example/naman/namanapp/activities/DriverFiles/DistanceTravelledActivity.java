@@ -49,18 +49,18 @@ public class DistanceTravelledActivity extends AppCompatActivity {
                     return;
                 }
 
-                etgetDistance.setText(null);
+                final String user_id = auth.getCurrentUser().getUid();
+
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        final String user_id = auth.getCurrentUser().getUid();
-                        String DBdist = dataSnapshot.child(user_id).child("distance").getValue(String.class);
-
-                        int amt = Integer.parseInt(DBdist) + Integer.parseInt(distance);
-
-                        databaseReference.child(user_id).child("distance").setValue(distance);
+                        if (!distance.equals(null)) {
+                            String DBdist = dataSnapshot.child(user_id).child("distance").getValue(String.class);
+                            int amt = Integer.parseInt(DBdist) + Integer.parseInt(distance);
+                            databaseReference.child(user_id).child("distance").setValue(String.valueOf(amt));
+                        }
                     }
 
                     @Override
@@ -68,6 +68,8 @@ public class DistanceTravelledActivity extends AppCompatActivity {
 
                     }
                 });
+
+                etgetDistance.setText(null);
 
             }
 
