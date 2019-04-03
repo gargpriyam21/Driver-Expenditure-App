@@ -59,25 +59,25 @@ public class AddIncomeActivity extends AppCompatActivity {
                 final String user_id = auth.getCurrentUser().getUid();
                 final Expenditure expenditure = new Expenditure(datetime, amount, reason);
 
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.child(user_id).child("expenditure").getValue();
-                        Exp.put(datetime, expenditure);
-                        databaseReference.child(user_id).child("expenditure").setValue(Exp);
-
-                        String DBamount = dataSnapshot.child(user_id).child("amount").getValue(String.class);
-                        int amt = Integer.parseInt(DBamount) + Integer.parseInt(amount);
-                        databaseReference.child(auth.getCurrentUser().getUid()).child("amount").setValue(String.valueOf(amt));
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+//                databaseReference.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                        HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.child(user_id).child("expenditure").getValue();
+//                        Exp.put(datetime, expenditure);
+//                        databaseReference.child(user_id).child("expenditure").setValue(Exp);
+//
+//                        String DBamount = dataSnapshot.child(user_id).child("amount").getValue(String.class);
+//                        int amt = Integer.parseInt(DBamount) + Integer.parseInt(amount);
+//                        databaseReference.child(auth.getCurrentUser().getUid()).child("amount").setValue(String.valueOf(amt));
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
 
                 etgetIncome.setText(null);
 
