@@ -78,4 +78,10 @@ public class AdminActivity extends AppCompatActivity {
         rvDrivers.setAdapter(usersAdapter);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        FirebaseAuth.getInstance().signOut();
+        super.onBackPressed();
+    }
 }

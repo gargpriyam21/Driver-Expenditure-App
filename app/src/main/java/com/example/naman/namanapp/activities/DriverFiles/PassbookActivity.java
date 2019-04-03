@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PassbookActivity extends AppCompatActivity {
 
@@ -50,7 +47,7 @@ public class PassbookActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tvName.setText(dataSnapshot.child("name").getValue(String.class));
-                tvAmount.setText(dataSnapshot.child("amount").getValue(String.class));
+                tvAmount.setText("Rs. " + dataSnapshot.child("amount").getValue(String.class));
             }
 
             @Override
@@ -60,33 +57,33 @@ public class PassbookActivity extends AppCompatActivity {
         });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid()).child("expenditure");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-                HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.getValue();
-
-                for (Map.Entry<String, Expenditure> entry : Exp.entrySet()) {
-                    expenditures.add(entry.getValue());
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        rvExpenditure = findViewById(R.id.rvExpenditure);
-        rvExpenditure.setLayoutManager(new LinearLayoutManager(this));
-
-        final PassbookAdapter passbookAdapter = new PassbookAdapter(this, expenditures);
-
-        rvExpenditure.setAdapter(passbookAdapter);
+//        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid()).child("expenditure");
+//
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//
+//                HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.getValue();
+//
+//                for (Map.Entry<String, Expenditure> entry : Exp.entrySet()) {
+//                    expenditures.add(entry.getValue());
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//        rvExpenditure = findViewById(R.id.rvExpenditure);
+//        rvExpenditure.setLayoutManager(new LinearLayoutManager(this));
+//
+//        final PassbookAdapter passbookAdapter = new PassbookAdapter(this, expenditures);
+//
+//        rvExpenditure.setAdapter(passbookAdapter);
 
 
     }

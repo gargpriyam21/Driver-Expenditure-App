@@ -72,31 +72,31 @@ public class AdminDriverActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(Uid).child("expenditure");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.getValue();
-
-                for (Map.Entry<String, Expenditure> entry : Exp.entrySet()) {
-                    Adminexpenditures.add(entry.getValue());
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        rvAdminPassExp = findViewById(R.id.rvAdminPassExp);
-        rvAdminPassExp.setLayoutManager(new LinearLayoutManager(this));
-
-        final AdminPassbookAdapter passbookAdapter = new AdminPassbookAdapter(this, Adminexpenditures);
-
-        rvAdminPassExp.setAdapter(passbookAdapter);
+//        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(Uid).child("expenditure");
+//
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                HashMap<String, Expenditure> Exp = (HashMap<String, Expenditure>) dataSnapshot.getValue();
+//
+//                for (Map.Entry<String, Expenditure> entry : Exp.entrySet()) {
+//                    Adminexpenditures.add(entry.getValue());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//        rvAdminPassExp = findViewById(R.id.rvAdminPassExp);
+//        rvAdminPassExp.setLayoutManager(new LinearLayoutManager(this));
+//
+//        final AdminPassbookAdapter passbookAdapter = new AdminPassbookAdapter(this, Adminexpenditures);
+//
+//        rvAdminPassExp.setAdapter(passbookAdapter);
 
 
     }

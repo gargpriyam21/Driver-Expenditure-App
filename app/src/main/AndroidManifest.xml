@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.naman.namanapp">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +27,8 @@
         <activity android:name=".activities.DriverFiles.PassbookActivity" />
         <activity android:name=".activities.AdminFiles.AdminDriverActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".AdminSignUpActivity"></activity>
+        <activity android:name=".AdminSignUpActivity" />
+        <activity android:name=".activities.DriverFiles.CameraActivity"></activity>
     </application>
 
 </manifest>

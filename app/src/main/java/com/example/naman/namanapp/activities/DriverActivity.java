@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.naman.namanapp.Driver;
 import com.example.naman.namanapp.R;
 import com.example.naman.namanapp.activities.DriverFiles.AddExpenditureActivity;
 import com.example.naman.namanapp.activities.DriverFiles.AddIncomeActivity;
@@ -121,5 +120,11 @@ public class DriverActivity extends AppCompatActivity {
         btnDistTravel.setOnClickListener(onButtonClickListener);
         btnPassbook.setOnClickListener(onButtonClickListener);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        FirebaseAuth.getInstance().signOut();
+        super.onBackPressed();
     }
 }

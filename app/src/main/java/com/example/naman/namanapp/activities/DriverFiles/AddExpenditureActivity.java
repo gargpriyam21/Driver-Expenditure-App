@@ -1,11 +1,13 @@
 package com.example.naman.namanapp.activities.DriverFiles;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.naman.namanapp.R;
@@ -27,6 +29,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseAuth auth;
     Button btnExpenditure;
+    ImageView ivCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,15 @@ public class AddExpenditureActivity extends AppCompatActivity {
         etgetExpenditure = findViewById(R.id.etgetExpenditure);
         etgetReason = findViewById(R.id.etgetReason);
         btnExpenditure = findViewById(R.id.btnAddExpenditure);
+        ivCamera = findViewById(R.id.ivCamera);
+
+        ivCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AddExpenditureActivity.this, CameraActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnExpenditure.setOnClickListener(new View.OnClickListener() {
             @Override

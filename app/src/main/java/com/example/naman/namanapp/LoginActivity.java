@@ -26,8 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
-
-    Button btnAdmin, btnDriver, btnLogin;
+    Button btnLogin;
     TextView tvRegister, tvForget;
     EditText etUser, etPassword;
     private FirebaseAuth auth;
@@ -49,8 +48,6 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        btnAdmin = findViewById(R.id.btnAdmin);
-        btnDriver = findViewById(R.id.btnDriver);
         etUser = findViewById(R.id.etUser);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -130,21 +127,6 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 }
                         );
-            }
-        });
-
-
-        btnAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, AdminActivity.class));
-            }
-        });
-
-        btnDriver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, DriverActivity.class));
             }
         });
 
